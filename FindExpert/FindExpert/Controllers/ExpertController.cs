@@ -37,10 +37,12 @@ namespace FindExpert.Controllers
         }
 
         [ActionName("AddRelation")]
-        [HttpPost]
-        public String AddRelation()
+        [HttpPost("/firstexpert/{firstExpertId}/secondexpert/{secondExpertId}")]
+        public String AddRelation(int firstExpertId, int secondExpertId)
         {
             abc = "Relation added";
+            
+            _expertService.AddRelation(firstExpertId, secondExpertId);
             return abc;
         }
 
@@ -55,9 +57,11 @@ namespace FindExpert.Controllers
 
         [HttpGet("{start}/{end}")]
         [ActionName("GetRelation")]
-        public String GetAbcString(int start, int end)
+        public List<int> GetAbcString(int start, int end)
         {
-            return abc;
+            return _expertService.GetRelation(start, end);  
+            // return "";
+
         }
 
 
