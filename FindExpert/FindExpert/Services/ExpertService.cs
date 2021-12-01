@@ -17,13 +17,13 @@ namespace FindExpert.Services
         {
             _expert.Id = expert.Id;
             _expert.Name = expert.Name;
-            _expertGraph.addExperts(expert);
+            _expertGraph.AddExpert(expert);
         }
 
-        public void AddRelation(int firstExpertId, int secondExpertId)
+        public string AddRelation(int firstExpertId, int secondExpertId)
         {
-            _expertGraph.addRelation(firstExpertId, secondExpertId);
-            return;
+            return _expertGraph.addRelation(firstExpertId, secondExpertId);
+            //return "Relation is added.";
         }
 
         public List<int> GetRelation(int firstExpertId, int secondExpertId) {
@@ -32,13 +32,28 @@ namespace FindExpert.Services
 
         public Expert GetExpert(int id)
         {
-            return _expertGraph.GetExpert(id);
+            if(id < 0 )
+            {
+                throw new ArgumentOutOfRangeException();  
+            }
+            Expert expert = _expertGraph.GetExpert(id);
+            if(expert == null)
+                throw new KeyNotFoundException();
+            return expert;
             // return (Expert)(_expert == null ? new Expert() : _expert);
         }
 
         public int GetExpertsCount()
         {
             return _expertGraph.GetExpertCount();
+        }
+
+        public string setAbcString(String a)
+        {
+            if (a == "a")
+                throw new InvalidDataException("Invalid paramters");
+            return "from set abc funciton Exerpt Service";
+
         }
     }
 }

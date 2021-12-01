@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
+        public string? Url { get; set; }
         public List<string> Headings { get; set; } = new List<string>();
         public List<int> Friends { get; set; } = new List<int>();
 

@@ -10,7 +10,7 @@
             experts = new List<Expert>();
         }
 
-        public void addExperts(Expert expert)
+        public void AddExpert(Expert expert)
         {
             experts.Add(expert);
         }
@@ -25,30 +25,30 @@
             return experts.Count;
         }
 
-        public void addRelation(int firstExpertId, int secondExpertId)
+        public string addRelation(int firstExpertId, int secondExpertId)
         {
             // Check for identical experts.
-            if (firstExpertId == secondExpertId) return;
+            if (firstExpertId == secondExpertId) return "Experts are identical";
 
             // check both are valid experts
             if(!(experts.Count > firstExpertId && experts.Count > secondExpertId))
             {
                 // Need to throw porper exception
-                return;
+                throw new ArgumentException();
             }
             
             // Check whether both experts are already friends.
             if (experts[firstExpertId].Friends.FindAll(p => (p == secondExpertId)).Count > 0)
             {
                 // Need to throw proper message that already friends
-                return;
+                return "Both experts are already freinds";
             }
 
             // add as friends
             experts[firstExpertId].Friends.Add(secondExpertId);
             experts[secondExpertId].Friends.Add(firstExpertId);
 
-            return;
+            return "Both experts are connected.";
         }
 
         public List<int> GetRelation(int firstExpertId, int secondExpertId)

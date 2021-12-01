@@ -21,43 +21,41 @@ namespace FindExpert.Controllers
             _expertService = expertService;
         }
 
-        [HttpPost]
+        [HttpPost("AddExpert/expertname/{name}/expertUrl/{url}")]
         [ActionName("AddExpert")]
-        public String AddExpert()
+        public IActionResult AddExpert(string name, string url)
         {
-            abc = "Expert is added";
-            // return "successfully added";
-
             Expert e = new Expert();
-            e.Id = _expertService.GetExpertsCount() + 1;
-            e.Name = "Amir" + e.Id;
+            e.Id = _expertService.GetExpertsCount();
+            e.Name = name;
+            e.Url = url;
             _expertService.AddExpert(e);
 
-            return "successfully added";
+            return Ok(name + " is added and Id is " + e.Id + ". To create relationship or search use this Id.");
         }
 
         [ActionName("AddRelation")]
-        [HttpPost("/firstexpert/{firstExpertId}/secondexpert/{secondExpertId}")]
-        public String AddRelation(int firstExpertId, int secondExpertId)
+        [HttpPost("AddRelation/firstexpert/{firstExpertId}/secondexpert/{secondExpertId}")]
+        public IActionResult AddRelation(int firstExpertId, int secondExpertId)
         {
             abc = "Relation added";
             
-            _expertService.AddRelation(firstExpertId, secondExpertId);
-            return abc;
+            return Ok(_expertService.AddRelation(firstExpertId, secondExpertId));
+            // return abc;
         }
 
         [HttpGet("{identifier}")]
         [ActionName("GetExpert")]
-        public Expert GetExpert(int identifier)
+        public IActionResult GetExpert(int identifier)
         {
             // a = abc;
-            return _expertService.GetExpert(identifier);
+            return Ok(_expertService.GetExpert(identifier));
 
         }
 
         [HttpGet("{start}/{end}")]
         [ActionName("GetRelation")]
-        public List<int> GetAbcString(int start, int end)
+        public List<int> GetRelation(int start, int end)
         {
             return _expertService.GetRelation(start, end);  
             // return "";
@@ -67,10 +65,19 @@ namespace FindExpert.Controllers
 
         [HttpPost]
         [ActionName("setAbcString")]
-        public String setAbcString(String a)
+        public IActionResult setAbcString(String a)
         {
-            abc = a;
-            return abc;
+            //try
+            // {
+                a = _expertService.setAbcString(a);
+                abc = a;
+                return Ok(abc);
+            // }
+            // catch (Exception ex)
+           //  {
+              //   throw new HttpResponseMessage;
+            //}
+            
         }
     }
 }

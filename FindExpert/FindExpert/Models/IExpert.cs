@@ -6,6 +6,7 @@ namespace FindExpert.Models
         List<string> Headings { get; set; }
         int Id { get; set; }
         string? Name { get; set; }
+        string? Url { get; set; }
         List<int> Friends { get; set; }
         Expert deepCopy();
         string ToString();
