@@ -30,9 +30,15 @@ namespace FindExpert.Services
             return _expertGraph.GetRelation(firstExpertId, secondExpertId);
         }
 
-        public Expert GetExpert()
+        public Expert GetExpert(int id)
         {
-            return (Expert)(_expert == null ? new Expert() : _expert);
+            return _expertGraph.GetExpert(id);
+            // return (Expert)(_expert == null ? new Expert() : _expert);
+        }
+
+        public int GetExpertsCount()
+        {
+            return _expertGraph.GetExpertCount();
         }
     }
 }

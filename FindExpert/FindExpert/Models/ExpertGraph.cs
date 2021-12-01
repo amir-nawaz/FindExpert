@@ -15,6 +15,16 @@
             experts.Add(expert);
         }
 
+        public Expert GetExpert(int id)
+        {
+            return experts[id];
+        }
+
+        public int GetExpertCount()
+        {
+            return experts.Count;
+        }
+
         public void addRelation(int firstExpertId, int secondExpertId)
         {
             // Check for identical experts.

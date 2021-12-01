@@ -7,7 +7,9 @@ namespace FindExpert.Models
         int NoOfExperts { get; set; }
 
         void addExperts(Expert expert);
+        Expert GetExpert(int id);
         void addRelation(int firstExpertId, int secondExpertId);
         List<int> GetRelation(int firstExpertId, int secondExpertId);
+        int GetExpertCount();
     }
 }

@@ -29,7 +29,7 @@ namespace FindExpert.Controllers
             // return "successfully added";
 
             Expert e = new Expert();
-            e.Id = _expertService.GetExpert().Id + 1;
+            e.Id = _expertService.GetExpertsCount() + 1;
             e.Name = "Amir" + e.Id;
             _expertService.AddExpert(e);
 
@@ -48,10 +48,10 @@ namespace FindExpert.Controllers
 
         [HttpGet("{identifier}")]
         [ActionName("GetExpert")]
-        public String GetExpert(int identifier)
+        public Expert GetExpert(int identifier)
         {
             // a = abc;
-            return _expertService.GetExpert().ToString();
+            return _expertService.GetExpert(identifier);
 
         }
 
