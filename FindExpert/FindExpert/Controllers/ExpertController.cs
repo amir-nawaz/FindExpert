@@ -10,7 +10,6 @@ namespace FindExpert.Controllers
     {
        
         private readonly ILogger<ExpertController> _logger;
-        public static string abc = "inital search expert";
 
         private IExpertService _expertService;
 
@@ -38,19 +37,14 @@ namespace FindExpert.Controllers
         [HttpPost("AddRelation/firstexpert/{firstExpertId}/secondexpert/{secondExpertId}")]
         public IActionResult AddRelation(int firstExpertId, int secondExpertId)
         {
-            abc = "Relation added";
-            
             return Ok(_expertService.AddRelation(firstExpertId, secondExpertId));
-            // return abc;
         }
 
         [HttpGet("{identifier}")]
         [ActionName("GetExpert")]
         public IActionResult GetExpert(int identifier)
         {
-            // a = abc;
             return Ok(_expertService.GetExpert(identifier));
-
         }
 
         [HttpGet("{start}/{end}")]
@@ -58,26 +52,7 @@ namespace FindExpert.Controllers
         public List<int> GetRelation(int start, int end)
         {
             return _expertService.GetRelation(start, end);  
-            // return "";
-
         }
 
-
-        [HttpPost]
-        [ActionName("setAbcString")]
-        public IActionResult setAbcString(String a)
-        {
-            //try
-            // {
-                a = _expertService.setAbcString(a);
-                abc = a;
-                return Ok(abc);
-            // }
-            // catch (Exception ex)
-           //  {
-              //   throw new HttpResponseMessage;
-            //}
-            
-        }
     }
 }

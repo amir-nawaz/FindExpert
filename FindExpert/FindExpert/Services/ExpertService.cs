@@ -23,7 +23,6 @@ namespace FindExpert.Services
         public string AddRelation(int firstExpertId, int secondExpertId)
         {
             return _expertGraph.addRelation(firstExpertId, secondExpertId);
-            //return "Relation is added.";
         }
 
         public List<int> GetRelation(int firstExpertId, int secondExpertId) {
@@ -40,20 +39,11 @@ namespace FindExpert.Services
             if(expert == null)
                 throw new KeyNotFoundException();
             return expert;
-            // return (Expert)(_expert == null ? new Expert() : _expert);
         }
 
         public int GetExpertsCount()
         {
             return _expertGraph.GetExpertCount();
-        }
-
-        public string setAbcString(String a)
-        {
-            if (a == "a")
-                throw new InvalidDataException("Invalid paramters");
-            return "from set abc funciton Exerpt Service";
-
         }
     }
 }

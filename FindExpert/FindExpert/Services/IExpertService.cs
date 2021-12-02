@@ -9,6 +9,5 @@ namespace FindExpert.Services
         string AddRelation(int firstExpertId, int secondExpertId);
         List<int> GetRelation(int firstExpertId, int secondExpertId);
         int GetExpertsCount();
-        string setAbcString(String a);
     }
 }
