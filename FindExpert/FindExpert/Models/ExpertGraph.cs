@@ -151,7 +151,7 @@
                 // was not able to do the detailed end to end testing.
                 if (last == dst)
                 {
-                    // printPath
+                    // return the path between experts
                     return path;
                 }
 
