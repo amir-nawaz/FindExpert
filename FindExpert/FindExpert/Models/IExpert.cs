@@ -8,7 +8,7 @@ namespace FindExpert.Models
         string? Name { get; set; }
         string? Url { get; set; }
         List<int> Friends { get; set; }
-        Expert deepCopy();
+        // Expert deepCopy();
         string ToString();
     }
 }

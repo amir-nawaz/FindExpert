@@ -32,7 +32,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Global exception Hanler
+// Global exception Handler
 // Custom Exception Filter can also be written for more detailed exception.
 app.UseExceptionHandler(options => {
     options.Run(
